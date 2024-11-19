@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Company
+from restaurant.models import Company
 
 
 class CompanySerializer(serializers.ModelSerializer):

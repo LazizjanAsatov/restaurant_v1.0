@@ -1,12 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from api.models import Client
-from api.serializers.client import ClientSerializer
+from restaurant.models import Client
+from restaurant.serializers.client import ClientSerializer
 
-
-
-# TODO: Company detail view CompanyDetailView
 
 class ClientListView(APIView):
     def get(self, request):
@@ -39,4 +36,3 @@ class ClientDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# Client.objects.get_or_create

@@ -1,8 +1,8 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.models import Company
-from api.serializers.company import CompanySerializer
+from restaurant.models import Company
+from restaurant.serializers.company import CompanySerializer
 
 
 class CompanyListView(APIView):
@@ -17,6 +17,7 @@ class CompanyListView(APIView):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 class CompanyDetailView(APIView):
     def get(self, request, pk):
         company = Company.objects.get(pk=pk)
@@ -29,6 +30,7 @@ class CompanyDetailView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
     def delete(self, request, pk):
         company = Company.objects.get(pk=pk)
         company.delete()

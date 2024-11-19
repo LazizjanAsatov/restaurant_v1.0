@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Client
+from restaurant.models import Client
 
 
 
