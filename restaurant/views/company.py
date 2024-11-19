@@ -3,9 +3,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from restaurant.models import Company
 from restaurant.serializers.company import CompanySerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class CompanyListView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         companies = Company.objects.all()
         serializer = CompanySerializer(companies, many=True)
@@ -19,6 +22,8 @@ class CompanyListView(APIView):
 
 
 class CompanyDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, pk):
         company = Company.objects.get(pk=pk)
         serializer = CompanySerializer(company)
